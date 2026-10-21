@@ -21,7 +21,7 @@ export default function App() {
           href="mailto:perryplatypus098234@gmail.com"
           className="mt-6 inline-block text-xl text-neutral-400 underline"
         >
-          youremail@gmail.com
+          perryplatypus098234@gmail.com
         </a>
       </footer>
     </>
