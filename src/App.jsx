@@ -1,5 +1,4 @@
 import Hero from './components/Hero'
-import Globe from './components/Globe'
 import Cube from './components/Cube'
 import Work from './components/Work'
 
@@ -9,7 +8,6 @@ export default function App() {
       <nav className="fixed left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-5 mix-blend-difference md:px-16">
         <a href="#" className="font-bold">S.</a>
         <div className="flex gap-6 text-sm">
-          <a href="#globe">Showcase</a>
           <a href="#cube">Viewer</a>
           <a href="#work">All work</a>
           <a href="#contact">Contact</a>
@@ -17,7 +15,6 @@ export default function App() {
       </nav>
 
       <Hero />
-      <Globe />
       <Cube />
       <Work />
 
