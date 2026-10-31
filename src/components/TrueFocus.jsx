@@ -11,17 +11,20 @@ export default function TrueFocus({
 }) {
   const words = sentence.split(' ')
   const [current, setCurrent] = useState(0)
+  const [hovering, setHovering] = useState(false)
   const containerRef = useRef(null)
   const wordRefs = useRef([])
   const [rect, setRect] = useState({ x: 0, y: 0, width: 0, height: 0 })
 
+  // auto loop, paused while the cursor is on the text
   useEffect(() => {
+    if (hovering) return
     const id = setInterval(
       () => setCurrent((p) => (p + 1) % words.length),
       (animationDuration + pauseBetweenAnimations) * 1000
     )
     return () => clearInterval(id)
-  }, [words.length, animationDuration, pauseBetweenAnimations])
+  }, [hovering, words.length, animationDuration, pauseBetweenAnimations])
 
   useEffect(() => {
     const measure = () => {
@@ -44,12 +47,20 @@ export default function TrueFocus({
   }, [current, sentence])
 
   return (
-    <span className="focus-container" ref={containerRef}>
+    <span
+      className="focus-container"
+      ref={containerRef}
+      onMouseLeave={() => setHovering(false)}
+    >
       {words.map((word, i) => (
         <span
           key={i}
           ref={(el) => (wordRefs.current[i] = el)}
           className="focus-word"
+          onMouseEnter={() => {
+            setHovering(true)
+            setCurrent(i)
+          }}
           style={{
             filter: i === current ? 'blur(0px)' : `blur(${blurAmount}px)`,
             transition: `filter ${animationDuration}s ease`,

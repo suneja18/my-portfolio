@@ -70,3 +70,11 @@ body {
   border-left: none;
   border-top: none;
 }
+/* cursor-following focus frame */
+.cursor-frame {
+  position: fixed;
+  z-index: 60;
+  opacity: 0;
+  --border-color: #ffffff;
+  --glow-color: rgba(255, 255, 255, 0.5);
+}
